@@ -1,0 +1,112 @@
+@import "https://p.typekit.net/p.css?s=1&k=zns7sax&ht=tk&f=44083.44087&a=1494256&app=typekit&e=css";
+@font-face {
+  font-family: obviously;
+  src: url("https://use.typekit.net/af/2012bb/00000000000000007735c9db/30/l?subset_id=2&fvd=n2&v=3") format("woff2"), url("https://use.typekit.net/af/2012bb/00000000000000007735c9db/30/d?subset_id=2&fvd=n2&v=3") format("woff"), url("https://use.typekit.net/af/2012bb/00000000000000007735c9db/30/a?subset_id=2&fvd=n2&v=3") format("opentype");
+  font-display: auto;
+  font-style: normal;
+  font-weight: 200;
+  font-stretch: normal;
+}
+
+@font-face {
+  font-family: obviously;
+  src: url("https://use.typekit.net/af/5bb57c/00000000000000007735c9e3/30/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n4&v=3") format("woff2"), url("https://use.typekit.net/af/5bb57c/00000000000000007735c9e3/30/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n4&v=3") format("woff"), url("https://use.typekit.net/af/5bb57c/00000000000000007735c9e3/30/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n4&v=3") format("opentype");
+  font-display: auto;
+  font-style: normal;
+  font-weight: 400;
+  font-stretch: normal;
+}
+
+.tk-obviously {
+  font-family: obviously, sans-serif;
+}
+
+.splitting.cells img {
+  width: 100%;
+  display: block;
+}
+
+@supports ( display: grid ) {
+  .splitting.cells {
+    visibility: hidden;
+    background-size: cover;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .splitting .cell-grid {
+    background: inherit;
+    width: 100%;
+    height: 100%;
+    grid-template: repeat( var(--row-total), 1fr ) / repeat( var(--col-total), 1fr );
+    display: grid;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+
+  .splitting .cell {
+    background: inherit;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .splitting .cell-inner {
+    background: inherit;
+    visibility: visible;
+    width: calc(100% * var(--col-total));
+    height: calc(100% * var(--row-total));
+    left: calc(-100% * var(--col-index));
+    top: calc(-100% * var(--row-index));
+    position: absolute;
+  }
+
+  .splitting .cell {
+    --center-x: calc((var(--col-total)  - 1) / 2);
+    --center-y: calc((var(--row-total)  - 1) / 2);
+    --offset-x: calc(var(--col-index)  - var(--center-x));
+    --offset-y: calc(var(--row-index)  - var(--center-y));
+    --distance-x: calc( (var(--offset-x) * var(--offset-x)) / var(--center-x));
+    --distance-y: calc( (var(--offset-y) * var(--offset-y)) / var(--center-y));
+  }
+}
+
+.splitting .word, .splitting .char {
+  display: inline-block;
+}
+
+.splitting .char {
+  position: relative;
+}
+
+.splitting .char:before, .splitting .char:after {
+  content: attr(data-char);
+  visibility: hidden;
+  -webkit-user-select: none;
+  user-select: none;
+  transition: inherit;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.splitting {
+  --word-center: calc((var(--word-total)  - 1) / 2);
+  --char-center: calc((var(--char-total)  - 1) / 2);
+  --line-center: calc((var(--line-total)  - 1) / 2);
+}
+
+.splitting .word {
+  --word-percent: calc(var(--word-index) / var(--word-total));
+  --line-percent: calc(var(--line-index) / var(--line-total));
+}
+
+.splitting .char {
+  --char-percent: calc(var(--char-index) / var(--char-total));
+  --char-offset: calc(var(--char-index)  - var(--char-center));
+  --distance: calc( (var(--char-offset) * var(--char-offset)) / var(--char-center));
+  --distance-sine: calc(var(--char-offset) / var(--char-center));
+  --distance-percent: calc((var(--distance) / var(--char-center)) );
+}
+
+/*# sourceMappingURL=index.34df27b5.css.map */
